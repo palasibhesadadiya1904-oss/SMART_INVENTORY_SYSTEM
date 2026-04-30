@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// ================= FILE HANDLING =================
+//  FILE HANDLING 
 
 void loadProducts(vector<Product> &products)
 {
@@ -36,7 +36,7 @@ void saveProducts(vector<Product> &products)
     file.close();
 }
 
-// ================= COMMON FUNCTIONS =================
+//  COMMON FUNCTIONS 
 
 void viewProducts(vector<Product> &products)
 {
@@ -69,7 +69,7 @@ void searchProduct(vector<Product> &products)
         cout << "Product not found.\n";
 }
 
-// ================= ORDER =================
+//  ORDER 
 
 void placeOrder(vector<Product> &products, string customerName)
 {
@@ -119,7 +119,7 @@ void placeOrder(vector<Product> &products, string customerName)
 
     } while (choice == 1);
 
-    // ================= SHOW FINAL CART =================
+    //  SHOW FINAL CART 
     cout << "\n*************************************************\n";
     cout << "*               CUSTOMER BILL                    *\n";
     cout << "*************************************************\n";
@@ -155,7 +155,7 @@ void placeOrder(vector<Product> &products, string customerName)
     cout << "Total Amount : " << totalAmount << endl;
     cout << "*************************************************\n";
 
-    // ================= CONFIRM =================
+    //  CONFIRM 
     int confirm;
     cout << "Confirm order? (1 = Yes, 0 = No): ";
     cin >> confirm;
@@ -191,7 +191,7 @@ void placeOrder(vector<Product> &products, string customerName)
         cout << " Order cancelled.\n";
     }
 }
-// ================= ADMIN FUNCTIONS =================
+//  ADMIN FUNCTIONS 
 
 void addProduct(vector<Product> &products)
 {
@@ -318,7 +318,7 @@ void generateReport(vector<Product> &products)
     cout << "Total Orders: " << orderCount << endl;
 }
 
-// ================= MENUS =================
+//  MENUS 
 
 void shopkeeperMenu(vector<Product> &products, SupplyManager &sm)
 {
