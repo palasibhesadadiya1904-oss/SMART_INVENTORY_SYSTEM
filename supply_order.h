@@ -9,7 +9,7 @@ private:
     int orderID;
     int productID;
     int quantity;
-    string status; // Ordered, Shipped, Delivered
+    string status; 
 
 public:
     SupplyOrder();

@@ -3,6 +3,7 @@
 #include <fstream>
 #include "product.h"
 #include "supply_manager.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -119,10 +120,17 @@ void placeOrder(vector<Product> &products, string customerName)
     } while (choice == 1);
 
     // ================= SHOW FINAL CART =================
-    cout << "\n===== YOUR ORDER =====\n";
-    cout << "ID\tName\tQty\tPrice\n";
+    cout << "\n*************************************************\n";
+    cout << "*               CUSTOMER BILL                    *\n";
+    cout << "*************************************************\n";
 
-    float total = 0;
+    cout << "Customer Name : " << customerName << "\n\n";
+
+    cout << "-------------------------------------------------\n";
+    cout << "ID\tName\tQty\tPrice\tTotal\n";
+    cout << "-------------------------------------------------\n";
+
+    float totalAmount = 0;
 
     for (auto &item : cart)
     {
@@ -130,15 +138,22 @@ void placeOrder(vector<Product> &products, string customerName)
         {
             if (p.id == item.first)
             {
-                float cost = item.second * p.price;
-                cout << p.id << "\t" << p.name << "\t"
-                     << item.second << "\t" << cost << endl;
-                total += cost;
+                float itemTotal = item.second * p.price;
+
+                cout << left << setw(6) << p.id
+                     << setw(12) << p.name
+                     << setw(6) << item.second
+                     << setw(8) << p.price
+                     << setw(8) << itemTotal << endl;
+
+                totalAmount += itemTotal;
             }
         }
     }
 
-    cout << "Total Amount: " << total << endl;
+    cout << "-------------------------------------------------\n";
+    cout << "Total Amount : " << totalAmount << endl;
+    cout << "*************************************************\n";
 
     // ================= CONFIRM =================
     int confirm;
@@ -484,13 +499,13 @@ void loginSystem(vector<Product> &products, SupplyManager &sm)
         if (user == "admin" && pass == "1234")
         {
             shopkeeperMenu(products, sm);
-            // After logout → go back to login
+     
             loginSystem(products, sm);
         }
         else
         {
             cout << " Invalid credentials!\n";
-            loginSystem(products, sm); // retry
+            loginSystem(products, sm);
         }
     }
 
@@ -502,14 +517,13 @@ void loginSystem(vector<Product> &products, SupplyManager &sm)
 
         customerMenu(products, name);
 
-        // After exit → back to login
         loginSystem(products, sm);
     }
 
     else if (role == 3)
     {
         cout << "Exiting system...\n";
-        return; // end program
+        return; 
     }
 
     else
@@ -519,7 +533,6 @@ void loginSystem(vector<Product> &products, SupplyManager &sm)
     }
 }
 
-// ================= MAIN =================
 
 int main()
 {

@@ -1,4 +1,0 @@
-palasi 23 2
-palasi 12 1
-palasi 12 1
----
